@@ -26,12 +26,6 @@ const PRESETS = {
     burst: "10, 1, 2, 1, 5",
     priority: "3, 1, 3, 4, 2",
     quantum: "1"
-  },
-  staggered: {
-    arrival: "0, 2, 4, 6, 8",
-    burst: "2, 4, 6, 8, 10",
-    priority: "3, 1, 4, 2, 5",
-    quantum: "2"
   }
 };
 
@@ -847,12 +841,6 @@ function initCpuPage() {
   if (btnPresetExam) {
     btnPresetExam.addEventListener("click", () => {
       applyPreset("exam", algo);
-    });
-  }
-  const btnPresetStaggered = document.getElementById("preset-staggered");
-  if (btnPresetStaggered) {
-    btnPresetStaggered.addEventListener("click", () => {
-      applyPreset("staggered", algo);
     });
   }
 

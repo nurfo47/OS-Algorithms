@@ -35,16 +35,23 @@ function buildSiteChrome() {
   header.className = "site-header";
   header.innerHTML = `
     <a href="index.html" class="site-brand" data-i18n="brand">Algoritmi</a>
-    <nav class="site-nav" aria-label="Main">
-      <a class="nav-link" data-nav="memory" href="memory_menagment.html" data-i18n="nav.memory">Raspodjela memorije</a>
-      <a class="nav-link" data-nav="process" href="process_menagment.html" data-i18n="nav.process">Raspodjela procesa</a>
-      <a class="nav-link" data-nav="paging" href="paging_menagment.html" data-i18n="nav.paging">Zamjena stranica</a>
-    </nav>
-    <div class="site-controls">
-      <button type="button" id="theme-toggle" class="icon-btn" aria-label="Toggle theme"></button>
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-        <button type="button" class="lang-btn" data-lang="bs" aria-pressed="false">BS</button>
+    <button type="button" id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="Menu">
+      <span class="menu-toggle-bar" aria-hidden="true"></span>
+      <span class="menu-toggle-bar" aria-hidden="true"></span>
+      <span class="menu-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <div class="site-menu" id="site-menu">
+      <nav class="site-nav" aria-label="Main">
+        <a class="nav-link" data-nav="memory" href="memory_menagment.html" data-i18n="nav.memory">Raspodjela memorije</a>
+        <a class="nav-link" data-nav="process" href="process_menagment.html" data-i18n="nav.process">Raspodjela procesa</a>
+        <a class="nav-link" data-nav="paging" href="paging_menagment.html" data-i18n="nav.paging">Zamjena stranica</a>
+      </nav>
+      <div class="site-controls">
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Toggle theme"></button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" class="lang-btn" data-lang="bs" aria-pressed="false">BS</button>
+        </div>
       </div>
     </div>
   `;
@@ -75,6 +82,63 @@ function buildSiteChrome() {
 
   applyLanguage(getLang());
   updateNavHighlight();
+  initMobileMenu(header);
+}
+
+const MOBILE_MENU_QUERY = window.matchMedia("(max-width: 960px)");
+
+function setMenuOpen(header, open) {
+  const toggle = document.getElementById("menu-toggle");
+  header.classList.toggle("menu-open", open);
+  document.body.classList.toggle("menu-is-open", open);
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    updateMenuToggleLabel();
+  }
+}
+
+function updateMenuToggleLabel() {
+  const toggle = document.getElementById("menu-toggle");
+  if (!toggle || typeof t !== "function") return;
+  const open = toggle.getAttribute("aria-expanded") === "true";
+  toggle.setAttribute("aria-label", t(open ? "nav.menuClose" : "nav.menuOpen"));
+}
+
+function initMobileMenu(header) {
+  const toggle = document.getElementById("menu-toggle");
+  if (!toggle) return;
+
+  updateMenuToggleLabel();
+
+  toggle.addEventListener("click", e => {
+    e.stopPropagation();
+    setMenuOpen(header, !header.classList.contains("menu-open"));
+  });
+
+  // Close when a navigation link is chosen
+  header.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => setMenuOpen(header, false));
+  });
+
+  // Close on outside click
+  document.addEventListener("click", e => {
+    if (header.classList.contains("menu-open") && !header.contains(e.target)) {
+      setMenuOpen(header, false);
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && header.classList.contains("menu-open")) {
+      setMenuOpen(header, false);
+      toggle.focus();
+    }
+  });
+
+  // Reset when switching to desktop width
+  MOBILE_MENU_QUERY.addEventListener("change", ev => {
+    if (!ev.matches) setMenuOpen(header, false);
+  });
 }
 
 function currentNavSection() {

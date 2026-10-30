@@ -5,6 +5,8 @@ const I18N = {
     "theme.dark": "Switch to dark mode",
     "lang.group": "Language",
     "nav.group": "Main navigation",
+    "nav.menuOpen": "Open menu",
+    "nav.menuClose": "Close menu",
     "nav.memory": "Memory allocation",
     "nav.process": "CPU scheduling",
     "home.title": "Allocation Algorithms Simulation",
@@ -76,7 +78,6 @@ const I18N = {
     "col.average": "Average",
     "preset.label": "Presets:",
     "preset.exam": "Exam Task 3 Example",
-    "preset.staggered": "Staggered Arrivals",
     "anim.play": "Play Animation",
     "anim.pause": "Pause",
     "anim.replay": "Replay",
@@ -185,9 +186,6 @@ const I18N = {
     "metric.hitRate": "Hit Rate",
     "metric.totalRequests": "Total Requests",
     "preset.p1": "PDF Example 1 (Letters, 4 frames)",
-    "preset.p2": "PDF Example 2 (Numbers, 4 frames)",
-    "preset.p3": "PDF Example 3 (FIFO, 3 frames)",
-    "preset.p4": "PDF Example 4 (20 requests, 3 frames)",
     "compare.pagingTitle": "Comparison of All Page Replacement Algorithms",
     "compare.pagingBest": "Minimum page faults achieved with {algo} ({val} faults).",
     "error.invalidRef": "Please enter a valid page sequence separated by commas or spaces (e.g. 2, 3, 1, 4, 5 or B, C, B, A, E).",
@@ -207,6 +205,8 @@ const I18N = {
     "theme.dark": "Prebaci na tamni način",
     "lang.group": "Jezik",
     "nav.group": "Glavna navigacija",
+    "nav.menuOpen": "Otvori meni",
+    "nav.menuClose": "Zatvori meni",
     "nav.memory": "Raspodjela memorije",
     "nav.process": "Raspodjela procesa",
     "home.title": "Simulacija algoritama raspodjele",
@@ -278,7 +278,6 @@ const I18N = {
     "col.average": "Average",
     "preset.label": "Primjeri:",
     "preset.exam": "Primjer sa ispita (Zadatak 3)",
-    "preset.staggered": "Različita vremena dolaska",
     "anim.play": "Pokreni animaciju",
     "anim.pause": "Pauziraj",
     "anim.replay": "Ponovi",
@@ -387,9 +386,6 @@ const I18N = {
     "metric.hitRate": "Stopa pogodaka",
     "metric.totalRequests": "Ukupno zahtjeva",
     "preset.p1": "Primjer 1 (Slova, 4 okvira)",
-    "preset.p2": "Primjer 2 (Brojevi, 4 okvira)",
-    "preset.p3": "Primjer 3 (FIFO, 3 okvira)",
-    "preset.p4": "Primjer 4 (20 zahtjeva, 3 okvira)",
     "compare.pagingTitle": "Uporedni prikaz svih algoritama zamjene stranica",
     "compare.pagingBest": "Najmanji broj promašaja ima {algo} ({val} promašaja).",
     "error.invalidRef": "Unesite ispravan niz stranica odvojen zarezima ili razmacima (npr. 2, 3, 1, 4, 5 ili B, C, B, A, E).",
@@ -444,6 +440,7 @@ function applyLanguage(lang) {
   }
   const langGroup = document.querySelector(".lang-switch");
   if (langGroup) langGroup.setAttribute("aria-label", t("lang.group"));
+  if (typeof updateMenuToggleLabel === "function") updateMenuToggleLabel();
   if (typeof window.onLanguageChange === "function") window.onLanguageChange(lang);
 }
 
