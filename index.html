@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Allocation Algorithms Simulation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+  <script src="layout.js"></script>
+</head>
+<body>
+  <h1 data-i18n="home.title">Allocation Algorithms Simulation</h1>
+  <p class="desc" data-i18n="home.desc">Choose a category to open the simulation.</p>
+  <div class="container cards">
+    <a class="algo-card" href="memory_menagment.html">
+      <svg viewBox="0 0 32 32"><rect x="4" y="6" width="8" height="20" rx="1"/><rect x="14" y="10" width="6" height="16" rx="1"/><rect x="22" y="4" width="6" height="22" rx="1"/></svg>
+      <h3 data-i18n="home.memory.title">Memory Allocation Algorithms</h3>
+      <p data-i18n="home.memory.desc">First Fit, Next Fit, Best Fit, Worst Fit and Quick Fit.</p>
+    </a>
+    <a class="algo-card" href="process_menagment.html">
+      <svg viewBox="0 0 32 32"><path d="M4 24h24M8 24V12h4v12M16 24V8h4v16M24 24v-8h4v8"/></svg>
+      <h3 data-i18n="home.process.title">CPU Scheduling Algorithms</h3>
+      <p data-i18n="home.process.desc">FCFS, SJF, Priority (non-preemptive) and Round Robin.</p>
+    </a>
+    <a class="algo-card" href="paging_menagment.html">
+      <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="2"/><line x1="5" y1="12" x2="27" y2="12"/><line x1="5" y1="20" x2="27" y2="20"/><path d="M11 16l5 5 5-5"/></svg>
+      <h3 data-i18n="home.paging.title">Page Replacement Algorithms</h3>
+      <p data-i18n="home.paging.desc">Optimal, LRU, FIFO, NFU, Second Chance and Clock.</p>
+    </a>
+  </div>
+</body>
+</html>

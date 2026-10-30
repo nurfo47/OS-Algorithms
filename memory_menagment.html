@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory Allocation Algorithms Simulation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+  <script src="layout.js"></script>
+</head>
+<body>
+  <h1 data-i18n="memory.title">Memory Allocation Algorithms Simulation</h1>
+  <div class="container cards">
+    <a class="algo-card" href="first_fit.html"><svg viewBox="0 0 32 32"><path d="M4 8h24M4 8l6-6M4 8l6 6M28 24H4M28 24l-6-6M28 24l-6 6"/></svg><h3 data-i18n="card.first.title">First Fit</h3><p data-i18n="card.first.desc">Allocates the first block that is large enough for the process.</p></a>
+    <a class="algo-card" href="next_fit.html"><svg viewBox="0 0 32 32"><path d="M6 16h20M18 8l8 8-8 8"/><circle cx="6" cy="16" r="2"/></svg><h3 data-i18n="card.next.title">Next Fit</h3><p data-i18n="card.next.desc">Continues searching from the last allocated block and allocates the first one that fits.</p></a>
+    <a class="algo-card" href="best_fit.html"><svg viewBox="0 0 32 32"><path d="M4 8h24M4 16h24M4 24h24"/><circle cx="21" cy="8" r="3"/><circle cx="11" cy="16" r="3"/><circle cx="21" cy="24" r="3"/></svg><h3 data-i18n="card.best.title">Best Fit</h3><p data-i18n="card.best.desc">Allocates the smallest block that is large enough for the process.</p></a>
+    <a class="algo-card" href="worst_fit.html"><svg viewBox="0 0 32 32"><path d="M6 3v26M16 3v26M26 3v26"/><path d="M2 10h8M12 20h8M22 12h8"/></svg><h3 data-i18n="card.worst.title">Worst Fit</h3><p data-i18n="card.worst.desc">Allocates the largest available block to the process.</p></a>
+    <a class="algo-card" href="quick_fit.html"><svg viewBox="0 0 32 32"><path d="M18 3L7 18h8l-2 11 12-16h-8z"/></svg><h3 data-i18n="card.quick.title">Quick Fit</h3><p data-i18n="card.quick.desc">Keeps separate lists of free blocks for frequently requested sizes.</p></a>
+  </div>
+</body>
+</html>

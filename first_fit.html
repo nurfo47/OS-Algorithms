@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Fit Memory Management Simulation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+  <script src="layout.js"></script>
+</head>
+<body data-algo="first">
+<div class="container">
+  <h1 data-i18n="sim.first.title">First Fit Memory Management Simulation</h1>
+  <p class="desc" data-i18n="sim.first.desc">Allocates the first block that is large enough for the process.</p>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-header" data-i18n="panel.input">Input Parameters</div>
+      <div class="panel-body">
+        <label for="blocks-input" data-i18n="label.blocks">Memory Blocks (comma separated sizes)</label>
+        <input type="text" id="blocks-input">
+        <label for="procs-input" data-i18n="label.processes">Processes (comma separated sizes)</label>
+        <input type="text" id="procs-input">
+        <div class="error" id="error"></div>
+        <button class="btn btn-primary" id="start" data-i18n="btn.start">Start Simulation</button>
+        <button class="btn btn-secondary" id="reset" data-i18n="btn.reset">Reset</button>
+        <a class="btn btn-warning" href="memory_menagment.html" data-i18n="btn.back">Back to Main</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header" data-i18n="panel.legend">Legend</div>
+      <div class="panel-body">
+        <div class="legend-item"><div class="legend-box free"></div><span data-i18n="legend.free">Free Memory Block</span></div>
+        <div class="legend-item"><div class="legend-box allocated"></div><span data-i18n="legend.allocated">Allocated Memory Block</span></div>
+        <div class="legend-item"><div class="legend-box proc-ok"></div><span data-i18n="legend.procOk">Allocated Process</span></div>
+        <div class="legend-item"><div class="legend-box proc-fail"></div><span data-i18n="legend.procFail">Unallocated Process</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header" data-i18n="panel.blocks">Memory Blocks</div>
+      <div class="panel-body scroll" id="blocks"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header" data-i18n="panel.processes">Processes</div>
+      <div class="panel-body scroll" id="processes"></div>
+    </div>
+  </div>
+
+  <div id="results" style="display:none">
+    <div class="panel">
+      <div class="panel-header" data-i18n="panel.result">Result</div>
+      <div class="panel-body">
+        <div class="summary" id="summary"></div>
+        <ol class="log" id="log"></ol>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

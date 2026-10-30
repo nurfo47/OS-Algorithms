@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FCFS CPU Scheduling Simulation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+  <script src="layout.js"></script>
+</head>
+<body data-cpu-algo="fcfs">
+<div class="container">
+  <h1 data-i18n="sim.fcfs.title">FCFS CPU Scheduling Simulation</h1>
+  <p class="desc" data-i18n="sim.fcfs.desc">First Come First Served — processes run in arrival order, without preemption.</p>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-header" data-i18n="panel.input">Input Parameters</div>
+      <div class="panel-body">
+        <div class="presets-row">
+          <span class="preset-label" data-i18n="preset.label">Presets:</span>
+          <button type="button" class="btn-preset" id="preset-exam" data-i18n="preset.exam">Exam Task 3 Example</button>
+          <button type="button" class="btn-preset" id="preset-staggered" data-i18n="preset.staggered">Staggered Arrivals</button>
+        </div>
+        <label for="arrival-input" data-i18n="label.arrival">Arrival Time (comma separated)</label>
+        <input type="text" id="arrival-input">
+        <label for="burst-input" data-i18n="label.burst">Burst Time (comma separated)</label>
+        <input type="text" id="burst-input">
+        <div class="error" id="error"></div>
+        <button class="btn btn-primary" id="start" data-i18n="btn.start">Start Simulation</button>
+        <button class="btn btn-secondary" id="reset" data-i18n="btn.reset">Reset</button>
+        <a class="btn btn-warning" href="process_menagment.html" data-i18n="btn.backProcess">Back to Algorithms</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header" data-i18n="panel.metrics">Metrics</div>
+      <div class="panel-body">
+        <div class="legend-item"><span data-i18n="metric.finish">Finish Time — when the process completes</span></div>
+        <div class="legend-item"><span data-i18n="metric.tat">Turnaround Time = Finish Time − Arrival Time</span></div>
+        <div class="legend-item"><span data-i18n="metric.wt">Waiting Time = Turnaround Time − Burst Time</span></div>
+        <div id="process-preview" style="margin-top:16px;">
+          <div style="font-weight:600; font-size:0.9rem; color:var(--text-muted);" data-i18n="proc.preview">Process Preview & Colors</div>
+          <div class="proc-chips" id="proc-chips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="results" class="output-panel" style="display:none">
+    <div class="panel">
+      <div class="panel-header output-header">
+        <span data-i18n="panel.output">Output</span>
+        <span class="algo-badge" id="algo-badge">FCFS</span>
+      </div>
+      <div class="panel-body">
+        <div class="summary-cards" id="summary-cards"></div>
+
+        <div class="gantt-wrap">
+          <div class="gantt-header-row">
+            <h2 class="gantt-title" data-i18n="gantt.title">Gantt Chart</h2>
+            <div class="anim-controls">
+              <button type="button" class="anim-btn" id="anim-play-btn" aria-label="Play/Pause">
+                <span id="anim-play-icon">▶</span> <span id="anim-play-text" data-i18n="anim.play">Play</span>
+              </button>
+              <button type="button" class="anim-btn" id="anim-replay-btn" aria-label="Replay">
+                <span>🔄</span> <span data-i18n="anim.replay">Replay</span>
+              </button>
+              <div class="speed-control">
+                <label for="anim-speed" data-i18n="anim.speed">Speed:</label>
+                <select id="anim-speed" class="select-sm">
+                  <option value="0.5">0.5x</option>
+                  <option value="1" selected>1x</option>
+                  <option value="2">2x</option>
+                  <option value="4">4x</option>
+                </select>
+              </div>
+              <button type="button" class="anim-btn" id="anim-skip-btn" data-i18n="anim.skip">Show All</button>
+            </div>
+          </div>
+          <div class="anim-status-bar">
+            <span class="anim-time-badge" id="anim-time-badge">t = 0</span>
+            <span class="anim-status-text" id="anim-status-text">Ready</span>
+          </div>
+          <div id="gantt" class="gantt-container"></div>
+        </div>
+
+        <div class="table-wrap" id="result-table"></div>
+
+        <div class="log-wrap">
+          <h3 class="log-title" data-i18n="log.title">Execution Log</h3>
+          <ol class="log cpu-log" id="log"></ol>
+        </div>
+
+        <div class="comparison-wrap" id="comparison-wrap">
+          <div class="comparison-header">
+            <h3 data-i18n="compare.title">Comparison of All Algorithms</h3>
+            <button type="button" class="btn btn-sm btn-outline" id="toggle-compare-btn" data-i18n="compare.show">Show Comparison</button>
+          </div>
+          <div id="comparison-content" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="process.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CPU Scheduling Algorithms Simulation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+  <script src="layout.js"></script>
+</head>
+<body>
+  <h1 data-i18n="process.title">CPU Scheduling Algorithms Simulation</h1>
+  <div class="container cards">
+    <a class="algo-card" href="fcfs.html">
+      <svg viewBox="0 0 32 32"><path d="M4 16h20"/><path d="M18 8l8 8-8 8"/><circle cx="6" cy="16" r="2"/></svg>
+      <h3 data-i18n="card.fcfs.title">FCFS</h3>
+      <p data-i18n="card.fcfs.desc">First Come First Served — processes run in arrival order.</p>
+    </a>
+    <a class="algo-card" href="sjf.html">
+      <svg viewBox="0 0 32 32"><path d="M6 24h4V16H6zm8 0h4V10h-4zm8 0h4V6h-4z"/></svg>
+      <h3 data-i18n="card.sjf.title">SJF</h3>
+      <p data-i18n="card.sjf.desc">Shortest Job First — the ready process with the shortest burst runs next.</p>
+    </a>
+    <a class="algo-card" href="priority.html">
+      <svg viewBox="0 0 32 32"><path d="M16 5l2.5 7.5H26l-6 4.5 2.3 7.5L16 20.2 9.7 24.5 12 17l-6-4.5h7.5z"/></svg>
+      <h3 data-i18n="card.priority.title">Priority</h3>
+      <p data-i18n="card.priority.desc">Non-preemptive priority scheduling — the highest-priority ready process runs next.</p>
+    </a>
+    <a class="algo-card" href="round_robin.html">
+      <svg viewBox="0 0 32 32"><path d="M8 10a10 10 0 1 1-2 8"/><path d="M8 4v6h6"/></svg>
+      <h3 data-i18n="card.rr.title">Round Robin</h3>
+      <p data-i18n="card.rr.desc">Each ready process gets a fixed time quantum in cyclic order.</p>
+    </a>
+  </div>
+</body>
+</html>
