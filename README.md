@@ -1,2 +1,2 @@
 # OS-Algorithms
-Web application for Operating systems algorithms - Memory menagement, Process menagement and Paging
+Web application for Operating systems algorithms - Memory allocation, process scheduling, and Page replacement
